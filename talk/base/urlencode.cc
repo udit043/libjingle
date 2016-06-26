@@ -1,4 +1,5 @@
 #include "talk/base/urlencode.h"
+#include <cstring>
 
 static int HexPairValue(const char * code) {
   int value = 0;

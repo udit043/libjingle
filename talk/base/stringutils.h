@@ -35,6 +35,8 @@
 #include <wchar.h>
 #endif  // WIN32
 
+#include <cstring>
+#include <cstdlib>
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -197,15 +199,6 @@ size_t strcatn(CTYPE* buffer, size_t buflen,
 }
 
 template<class CTYPE>
-size_t sprintfn(CTYPE* buffer, size_t buflen, const CTYPE* format, ...) {
-  va_list args;
-  va_start(args, format);
-  size_t len = vsprintfn(buffer, buflen, format, args);
-  va_end(args);
-  return len;
-}
-
-template<class CTYPE>
 size_t vsprintfn(CTYPE* buffer, size_t buflen, const CTYPE* format,
                  va_list args) {
   int len = vsnprintf(buffer, buflen, format, args);
@@ -213,6 +206,15 @@ size_t vsprintfn(CTYPE* buffer, size_t buflen, const CTYPE* format,
     len = static_cast<int>(buflen - 1);
     buffer[len] = 0;
   }
+  return len;
+}
+
+template<class CTYPE>
+size_t sprintfn(CTYPE* buffer, size_t buflen, const CTYPE* format, ...) {
+  va_list args;
+  va_start(args, format);
+  size_t len = vsprintfn(buffer, buflen, format, args);
+  va_end(args);
   return len;
 }
 
@@ -269,7 +271,7 @@ size_t asccpyn(wchar_t* buffer, size_t buflen,
 template<>
 struct Traits<char> {
   typedef std::string string;
-  inline static const char* Traits<char>::empty_str() { return ""; }
+  inline static const char* empty_str() { return ""; }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -281,7 +283,7 @@ struct Traits<char> {
 template<>
 struct Traits<wchar_t> {
   typedef std::wstring string;
-  inline static const wchar_t* Traits<wchar_t>::empty_str() { return L""; }
+  inline static const wchar_t* empty_str() { return L""; }
 };
 
 #endif  // WIN32

@@ -25,6 +25,8 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <mutex>
+#include <unistd.h> 
 #include "talk/base/ssladapter.h"
 
 #if !defined(SSL_USE_SCHANNEL) && !defined(SSL_USE_OPENSSL)

@@ -80,6 +80,7 @@
 
 #include <set>
 #include <list>
+#include <cstddef>
 
 // On our copy of sigslot.h, we force single threading
 #define SIGSLOT_PURE_ISO

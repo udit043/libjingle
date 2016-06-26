@@ -28,7 +28,7 @@
 #include "talk/base/bytebuffer.h"
 #include "talk/p2p/base/stunserver.h"
 #include <iostream>
-
+#include <cstring>
 #ifdef POSIX
 extern "C" {
 #include <errno.h>

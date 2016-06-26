@@ -30,7 +30,8 @@
 #include <cfloat>
 #include <cmath>
 #include <sstream>
-
+#include <cstring>
+ 
 #ifdef POSIX
 extern "C" {
 #include <sys/socket.h>

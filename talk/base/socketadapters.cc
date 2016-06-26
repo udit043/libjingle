@@ -29,6 +29,7 @@
 #pragma warning(disable:4786)
 #endif
 
+#include <cstring>
 #include <time.h>
 #include <errno.h>
 

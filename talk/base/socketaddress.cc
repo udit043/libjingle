@@ -35,6 +35,7 @@
 
 #include <cstring>
 #include <sstream>
+#include <unistd.h>  
 
 #include "talk/base/byteorder.h"
 #include "talk/base/common.h"
